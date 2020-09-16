@@ -77,7 +77,7 @@ async function start() {
           .then((data) => {
             const manager = new Manager(name, id, email, data.officeNo);
 
-            teamMember = fs.readFileSync("/manager.html");
+            teamMember = fs.readFileSync("./manager.html");
 
             teamHTML = teamHTML + "\n" + eval("`" + teamMember + "`");
           });
@@ -94,7 +94,7 @@ async function start() {
           ])
           .then((data) => {
             const intern = new Intern(name, id, email, data.school);
-            teamMember = fs.readFileSync("/intern.html");
+            teamMember = fs.readFileSync("./intern.html");
             teamHTML = teamHTML + "\n" + eval("`" + teamMember + "`");
           });
         break;
@@ -110,18 +110,18 @@ async function start() {
           ])
           .then((data) => {
             const engineer = new Engineer(name, id, email, data.github);
-            teamMember = fs.readFileSync("/engineer.html");
+            teamMember = fs.readFileSync("./engineer.html");
             teamHTML = teamHTML + "\n" + eval("`" + teamMember + "`");
           });
         break;
     }
   }
 
-  const mainHTML = fs.readFileSync("/main.html");
+  const mainHTML = fs.readFileSync("./main.html");
 
   teamHTML = eval("`" + mainHTML + "`");
 
-  fs.writeFile("/team.html", teamHTML, function (err) {
+  fs.writeFile("team.html", teamHTML, function (err) {
     if (err) {
       return console.log(err);
     }
